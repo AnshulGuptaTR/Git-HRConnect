@@ -1,0 +1,520 @@
+<section class="fl-main-section">
+  <div class="fl-main">
+    <!-- Header -->
+    <div class="fl-header">
+      <div class="fl-main-logo">
+        <img
+          src="/assets/Desktop-One-Images/thomsonreuters_logo.png"
+          width="262"
+          height="auto"
+        />
+      </div>
+      <div class="fl-employee-profile">
+        <div><i class="bi bi-caret-down-fill"></i></div>
+        <div class="fl-employee">
+          <div class="fl-employee-image"></div>
+        </div>
+      </div>
+      <div class="fl-employee-detail">
+        <span class="fl-employee-name">{{appUserName}}</span>
+        <span class="fl-employee-id">123456</span>
+      </div>
+      <div class="fl-view-goals">
+        <button class="fl-view-goals-btn">View Goals</button>
+      </div>
+      <div class="fl-notification"></div>
+    </div>
+    <!-- Sidebar Nav -->
+    <div class="fl-sidebar-nav">
+      <div class="fl-active-nav"></div>
+      <div class="fl-nav-profile">
+        <div class="fl-nav-profile-img"></div>
+      </div>
+      <div class="fl-nav-calender">
+        <div class="fl-nav-calender-img"></div>
+      </div>
+      <div class="fl-nav-setting">
+        <div class="fl-nav-setting-img"></div>
+      </div>
+    </div>
+    <!-- Mobile Header -->
+    <div class="fl-mobile-header-main">
+      <div class="fl-mobile-header">
+        <div class="fl-mob-logo-main">
+          <div class="fl-mob-logo">
+            <img
+              src="/assets/Desktop-One-Images/thomsonreuters_logo.png"
+              width="262"
+              height="auto"
+            />
+          </div>
+          <div class="fl-mob-emp-detail">
+            <span class="fl-employee-name">{{appUserName}}</span>
+            <span class="fl-employee-id">123456</span>
+          </div>
+        </div>
+        <div>
+          <div class="fl-mob-nav">
+            <div class="fl-mob-settings-bar">
+              <img
+                src="/assets/Desktop-One-Images/profile.png"
+                width="32"
+                height="auto"
+              />
+              <img
+                src="/assets/Desktop-One-Images/calendar.png"
+                width="32"
+                height="auto"
+              />
+              <img
+                src="/assets/Desktop-One-Images/setting_1.png"
+                width="32"
+                height="auto"
+              />
+            </div>
+            <div class="fl-mob-emplyee-details">
+              <div class="fl-mob-notification">
+                <img
+                  src="/assets/Desktop-One-Images/notification.png"
+                  width="18"
+                  height="auto"
+                />
+              </div>
+              <div class="fl-view-goals-mob">
+                <button class="fl-view-goals-mob-btn">View Goals</button>
+              </div>
+              <div class="fl-mob-employee-profile">
+                <img
+                  src="/assets/Desktop-One-Images/profile_two.png"
+                  width="18"
+                  height="auto"
+                />
+              </div>
+              <div class="fl-mob-down-fill">
+                <i class="bi bi-caret-down-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="fl-body">
+      <div class="fl-main-body">
+        <!-- Employee Details -->
+        <div class="fl-details">
+          <div class="fl-emp-details">
+            <div class="fl-emp-details-title">
+              <h2>Employee Details:</h2>
+            </div>
+            <table>
+              <tr>
+                <th scope="row">EMP ID:</th>
+                <td>
+                  <!-- <div class="fl-search-emp-id">
+                    <label>Search By Employee Id</label>
+                  </div> -->
+
+                  <div class="fl-search-icon">
+                    <input
+                      class="fl-input-field"
+                      type="text"
+                      #empId
+                      [(ngModel)]="empIdSrc"
+                      placeholder="Search By Employee Id"
+                    />
+                    <i
+                      class="bi bi-search icon"
+                      (click)="searchEmp(empId.value)"
+                    ></i>
+                  </div>
+                  <span *ngIf="notValidId" class="fl-error-msg"
+                    >Enter the valid employee ID.</span
+                  >
+                </td>
+              </tr>
+              <tr *ngFor="let empData of employeeDetails">
+                <th scope="row">{{ empData.title }}</th>
+                <td>{{ empData.value }}</td>
+              </tr>
+            </table>
+          </div>
+          <!-- Engagements Details -->
+          <div class="fl-engage-details">
+            <div class="fl-engage-details-title">
+              <h2>Engagements:</h2>
+            </div>
+            <div class="fl-engage-details-col">
+              <div class="fl-engage-details-col-1">
+                <div class="fl-engage-details-col-1-1">
+                  <ul>
+                    <div class="fl-engage-details-blurb">
+                      <div class="fl-engage-details-blurb-img">
+                        <span>
+                          <img
+                            src="/assets/Desktop-One-Images/handshake_2_color_1.png"
+                            height="63px"
+                            width="63px"
+                          />
+                        </span>
+                      </div>
+                      <div class="fl-engage-details-blurb-btn">
+                        <li>
+                          <span>Stay Interviews</span>
+                        </li>
+                        <li>
+                          <button (click)="ToggleFunction(collapseToggl, 1)">
+                            Set/Add Meeting
+                          </button>
+                        </li>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+                <div class="fl-engage-details-col-1-2">
+                  <ul>
+                    <div
+                      class="fl-engage-details-blurb"
+                      *ngIf="gender == 'Female' || gender == ''"
+                    >
+                      <div class="fl-engage-details-blurb-img">
+                        <span>
+                          <img
+                            src="/assets/Desktop-One-Images/women_connect.png"
+                            height="63px"
+                            width="63px"
+                          />
+                        </span>
+                      </div>
+                      <div class="fl-engage-details-blurb-btn">
+                        <li>
+                          <span>Women Connect</span>
+                        </li>
+                        <li>
+                          <button (click)="ToggleFunction(collapseToggl, 2)">
+                            Set/Add Meeting
+                          </button>
+                        </li>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+              <div class="fl-engage-details-col-2">
+                <div class="fl-engage-details-col-2-wrap">
+                  <div>
+                    <h2>Engagement Overview:</h2>
+                  </div>
+                  <!-- <circle-progress
+                    [percent]="85"
+                    [radius]="100"
+                    [showSubtitle]="true"
+                    [title]= "strCount"
+                  ></circle-progress> -->
+                  <circle-progress
+                    class="fl-progress-circle"
+                    [percent]="85"
+                    [radius]="100"
+                    [showSubtitle]="true"
+                    [title]="strCount"
+                    [titleFontSize]="'42'"
+                    [subtitleFontSize]="'18'"
+                    [titleFontWeight]="'900'"
+                    [subtitleFontWeight]="'500'"
+                    [titleColor]="'#878787'"
+                    [subtitleColor]="'#878787'"
+                  ></circle-progress>
+                  <!-- <div class="fl-engage-details-col-2-connect">
+                    <div class="fl-engage-details-col-2-connect-wrap">
+                      <h3>{{ connectCount }}</h3>
+                      <span>Connects</span>
+                    </div>
+                  </div> -->
+                  <div>
+                    <button (click)="engagementTable(statisticsTable)">
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div
+          class="modal"
+          [ngClass]="{ 'fade showSum': collapseToggl }"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">
+                  Set / Add Meeting
+                  <span><i class="bi bi-question-circle"></i></span>
+                </h2>
+                <button
+                  type="button"
+                  class="btn-close"
+                  aria-label="Close"
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  (click)="closeSum()"
+                >
+                  <i class="bi bi-x"></i>
+                </button>
+              </div>
+              <div class="fl-form-sub-heading">
+                Set Up Meetings with connections
+              </div>
+              <div *ngIf="formShowHide">
+                <form
+                  class="fl-modal-form"
+                  [formGroup]="detailForm"
+                  (ngSubmit)="setMeeting(detailForm)"
+                >
+                  <div class="form-group">
+                    <div>
+                      <label>Your Employee Id</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="input1"
+                        placeholder="Employee Id"
+                        formControlName="Loggerempid"
+                      />
+                    </div>
+                    <div>
+                      <label>Connection's Employee Id</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="input2"
+                        placeholder="Employee Id"
+                        formControlName="empid"
+                      />
+                    </div>
+                    <div class="fl-form-connection">
+                      <div class="form-group col-md-6 fl-form-connection-type">
+                        <div><label>Select Connections Type</label></div>
+                        <div class="select">
+                          <select
+                            name="format"
+                            id="format"
+                            formControlName="engageType"
+                          >
+                            <option
+                              class="fl-form-option"
+                              *ngFor="let engage of engagementType"
+                              value="{{ engage.option }}"
+                            >
+                              {{ engage.label }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- <div class="form-group col-md-6 fl-form-connection-type">
+                        <label>Select Connections Type</label>
+                        <select
+                          class="form-select form-select-sm connection-type fl-form-select"
+                          aria-label=".form-select-sm example"
+                        >
+                          <option class="fl-form-option" value="1">
+                            1X1 Meeting
+                          </option>
+                          <option class="fl-form-option" value="2">
+                            Women Connect
+                          </option>
+                          <option class="fl-form-option" value="3">Skip</option>
+                          <option class="fl-form-option" value="4">
+                            Top Talent Connect
+                          </option>
+                          <option class="fl-form-option" value="5">NMAP</option>
+                          <option class="fl-form-option" value="6">
+                            Policy Refresher Session
+                          </option>
+                        </select>
+                      </div> -->
+                      <div class="form-group col-md-6 fl-form-date">
+                        <label>Select Date</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="input4"
+                          placeholder="Employee Id"
+                          formControlName="meetData"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress2"
+                        >Select Predefined Reasons</label
+                      >
+                      <div class="select">
+                        <select
+                          name="format"
+                          id="format"
+                          formControlName="reason"
+                        >
+                          <option
+                            class="fl-form-option"
+                            *ngFor="let reasonTy of reasonType"
+                            value="{{ reasonTy.option }}"
+                          >
+                            {{ reasonTy.label }}
+                          </option>
+                        </select>
+                      </div>
+                      <!-- <select
+                        class="form-select form-select-sm reason fl-form-select"
+                        aria-label=".form-select-sm example"
+                      >
+                        <option class="fl-form-option" value="1">Reason</option>
+                        <option class="fl-form-option" value="2">
+                          Option2
+                        </option>
+                        <option class="fl-form-option" value="3">
+                          Option3
+                        </option>
+                        <option class="fl-form-option" value="4">
+                          Option4
+                        </option>
+                        <option class="fl-form-option" value="5">
+                          Option5
+                        </option>
+                        <option class="fl-form-option" value="6">
+                          Option6
+                        </option>
+                      </select> -->
+                    </div>
+                    <div class="fl-modal-form-btn">
+                      <button type="submit" class="btn btn-primary set-meet">
+                        Set Meeting
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="!formShowHide" class="fl-submit-form-msg">
+                <span>Meeting has been added successfully.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Statistics Details -->
+        <div class="fl-statistics" *ngIf="statisticsTable">
+          <div class="fl-stat-1">
+            <h2>Engagement Statistics:</h2>
+            <!-- <span>Filter</span> -->
+          </div>
+          <div class="fl-stat-2">
+            <table>
+              <tr>
+                <th scope="col">Timeframe</th>
+                <th scope="col">Stay Interviews</th>
+                <th scope="col">Women Connect</th>
+                <!-- <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th> -->
+              </tr>
+              <!-- <tr>
+                <th scope="row">Weekly</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Monthly</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr> -->
+              <tr>
+                <th scope="row">Quarter 1</th>
+                <td *ngFor="let quart of engStatistics; index as i">
+                  <span *ngIf="gender == 'Female'">
+                    {{ (quart.q1 / 3) * 100 | number: "1.0-0" }}%
+                  </span>
+                  <span *ngIf="gender == 'Male' && i != 1">
+                    {{ (quart.q1 / 3) * 100 | number: "1.0-0" }}%
+                  </span>
+                  <!-- <span *ngIf="quart.type == '1x1'"> {{ quart.count }} </span> -->
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Quarter 2</th>
+                <td *ngFor="let quart of engStatistics; index as i">
+                  <span *ngIf="gender == 'Female'">
+                    {{ (quart.q2 / 3) * 100 | number: "1.0-0" }}%
+                  </span>
+                  <span *ngIf="gender == 'Male' && i != 1">
+                    {{ (quart.q2 / 3) * 100 | number: "1.0-0" }}%
+                  </span>
+                  <!-- <span *ngIf="quart.type == '1x1'"> {{ quart.count }} </span> -->
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Quarter 3</th>
+                <td *ngFor="let quart of engStatistics; index as i">
+                  <span *ngIf="gender == 'Female'">
+                    {{ (quart.q3 / 3) * 100 | number: "1.0-0" }}%
+                  </span>
+                  <span *ngIf="gender == 'Male' && i != 1">
+                    {{ (quart.q3 / 3) * 100 | number: "1.0-0" }}%
+                  </span>
+                  <!-- <span *ngIf="quart.type == '1x1'"> {{ quart.count }} </span> -->
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Quarter 4</th>
+                <td *ngFor="let quart of engStatistics; index as i">
+                  <span *ngIf="gender == 'Female'">
+                    {{ (quart.q4 / 3) * 100 | number: "1.0-0" }}%
+                  </span>
+                  <span *ngIf="gender == 'Male' && i != 1">
+                    {{ (quart.q4 / 3) * 100 | number: "1.0-0" }}%
+                  </span>
+                  <!-- <span *ngIf="quart.type == '1x1'"> {{ quart.count }} </span> -->
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Annual</th>
+                <td *ngFor="let quart of engStatistics; index as i">
+                  <span *ngIf="gender == 'Female'"
+                    >{{
+                      ((quart.q1 + quart.q2 + quart.q3 + quart.q4) / 12) * 100
+                        | number: "1.0-0"
+                    }}%</span
+                  >
+                  <span *ngIf="gender == 'Male' && i != 1"
+                    >{{
+                      ((quart.q1 + quart.q2 + quart.q3 + quart.q4) / 12) * 100
+                        | number: "1.0-0"
+                    }}%</span
+                  >
+                  <!-- <span *ngIf="quart.type == '1x1'"> {{ quart.count }} </span> -->
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

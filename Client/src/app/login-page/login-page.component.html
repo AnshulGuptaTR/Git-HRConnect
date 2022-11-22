@@ -1,0 +1,25 @@
+<section class="fl-main-section">
+  <div class="fl-login">
+    <div class="fl-login-container">
+      <div class="fl-image-container">
+        <img
+          src="/assets/Login-Images/thomsonreuters_logo.png"
+          alt="Thomson Reuters Logo"
+          width="275"
+          height="auto"
+        />
+      </div>
+      <div>
+        <span class="fl-welcome-text">Welcome To HRBP Dashboard</span>
+      </div>
+      <div class="fl-esso">
+        <input type="text" #userName placeholder="Enter username" style="width: 210px;height: 40px;" class="loginIn">
+        <button class="fl-esso-btn" (click)="LoginUser(userName)">
+          login with eSSO <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- routerLink="/login-option" -->

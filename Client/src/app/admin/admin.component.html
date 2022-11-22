@@ -1,0 +1,42 @@
+<section class="fl-main-section">
+  <div class="fl-login">
+    <div class="fl-login-container">
+      <div class="fl-image-container">
+        <img
+          src="/assets/Login-Images/thomsonreuters_logo_1.png"
+          alt="Thomson Reuters Logo"
+          width="160"
+          height="auto"
+        />
+      </div>
+      <div class="fl-welcome-text-container">
+        <span class="fl-welcome-text">Welcome To HRBP Dashboard</span>
+      </div>
+      <div class="fl-one-connect" *ngIf="userAccess == 1">
+        <button class="fl-one-connect-btn" routerLink="/dashboard">
+          1X1 Connect <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+      <div class="fl-group-connect" *ngIf="userAccess == 1">
+        <button class="fl-group-connect-btn" routerLink="/user-group-connects">
+          Group Connect <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+      <div class="fl-admin-dashboard" *ngIf="adminStatus == 1">
+        <button class="fl-admin-dashboard-btn" routerLink="/admin-dashboard">
+          Admin Dashboard <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+      <div class="fl-super-user-dashboard" *ngIf="superUserAccess == 1">
+        <button class="fl-super-user-dashboard-btn" routerLink="/super-user-dashoard">
+          Super User Dashboard <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+      <div class="fl-super-user-dashboard" *ngIf="supsuperUserAccess == 1">
+        <button class="fl-super-user-dashboard-btn" routerLink="/super-super-user-dashoard">
+          Super Super User Dashboard <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

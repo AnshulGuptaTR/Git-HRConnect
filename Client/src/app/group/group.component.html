@@ -1,0 +1,568 @@
+<section class="fl-main-section">
+  <div class="fl-main">
+    <!-- Header -->
+    <div class="fl-header">
+      <div class="fl-main-logo">
+        <img
+          src="/assets/Desktop-One-Images/thomsonreuters_logo.png"
+          width="262"
+          height="auto"
+        />
+      </div>
+      <div class="fl-employee-profile">
+        <div><i class="bi bi-caret-down-fill"></i></div>
+        <div class="fl-employee">
+          <div class="fl-employee-image"></div>
+        </div>
+      </div>
+      <div class="fl-employee-detail">
+        <span class="fl-employee-name">John Doe</span>
+        <span class="fl-employee-id">123456</span>
+      </div>
+      <div class="fl-view-goals">
+        <button class="fl-view-goals-btn">View Goals</button>
+      </div>
+      <div class="fl-notification" (click)="toogleNotification()">
+        <span class="badge" *ngIf="notification > 0">{{notification}}</span>
+      </div>
+       <!-- Notification Drop Down-->
+
+       <div *ngIf="showMe && notificationList.length > 0">
+
+        <div class="fl-notification-dropdown-main">
+
+          <ul class="fl-notification-dropdown">
+
+            <!-- <li><a>We have {{ newHireCount }} new hire. Please set the New Hire Connect.</a></li> -->
+            <li *ngFor="let item of notificationList"><a>{{ item.msg }}</a></li>
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- Sidebar Nav -->
+    <div class="fl-sidebar-nav">
+      <div class="fl-active-nav"></div>
+      <div class="fl-nav-profile">
+        <div class="fl-nav-profile-img"></div>
+      </div>
+      <div class="fl-nav-calender">
+        <div class="fl-nav-calender-img"></div>
+      </div>
+      <div class="fl-nav-setting">
+        <div class="fl-nav-setting-img"></div>
+      </div>
+    </div>
+    <!-- Mobile Header -->
+    <div class="fl-mobile-header-main">
+      <div class="fl-mobile-header">
+        <div class="fl-mob-logo-main">
+          <div class="fl-mob-logo">
+            <img
+              src="/assets/Desktop-One-Images/thomsonreuters_logo.png"
+              width="262"
+              height="auto"
+            />
+          </div>
+          <div class="fl-mob-emp-detail">
+            <span class="fl-employee-name">John Doe</span>
+            <span class="fl-employee-id">123456</span>
+          </div>
+        </div>
+        <div>
+          <div class="fl-mob-nav">
+            <div class="fl-mob-settings-bar">
+              <img
+                src="/assets/Desktop-One-Images/profile.png"
+                width="32"
+                height="auto"
+              />
+              <img
+                src="/assets/Desktop-One-Images/calendar.png"
+                width="32"
+                height="auto"
+              />
+              <img
+                src="/assets/Desktop-One-Images/setting_1.png"
+                width="32"
+                height="auto"
+              />
+            </div>
+            <div class="fl-mob-emplyee-details">
+              <div class="fl-mob-notification">
+                <img
+                  src="/assets/Desktop-One-Images/notification.png"
+                  width="18"
+                  height="auto"
+                />
+              </div>
+              <div class="fl-view-goals-mob">
+                <button class="fl-view-goals-mob-btn">View Goals</button>
+              </div>
+              <div class="fl-mob-employee-profile">
+                <img
+                  src="/assets/Desktop-One-Images/profile_two.png"
+                  width="18"
+                  height="auto"
+                />
+              </div>
+              <div class="fl-mob-down-fill">
+                <i class="bi bi-caret-down-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="fl-body">
+      <div class="fl-main-body">
+        <!-- Employee Details -->
+        <div class="fl-details">
+          <div class="fl-manager-details">
+            <div class="fl-manager-details-title">
+              <h2>Managers Details:</h2>
+            </div>
+            <!-- <ul>
+              <li>Name</li>
+              <li>Team Count</li>
+              <li>View Details</li>
+            </ul> -->
+            <!-- <ul>
+              <li>Bala Devaraj</li>
+              <li>100</li>
+              <li><button>View</button></li>
+            </ul>
+            <ul>
+              <li>Bala Devaraj</li>
+              <li>100</li>
+              <li><button>View</button></li>
+            </ul>
+            <ul>
+              <li>Bala Devaraj</li>
+              <li>100</li>
+              <li><button>View</button></li>
+            </ul> -->
+
+            <table>
+              <!-- <tr>
+                <th scope="row">EMP ID:</th>
+                <td>
+                  <div class="fl-search-emp-id">
+                    <label>Search By Employee Id</label>
+                  </div>
+
+                  <div class="fl-search-icon">
+                    <input class="fl-input-field" type="text" #empId />
+                    <i
+                      class="bi bi-search icon"
+                      (click)="searchEmp(empId.value)"
+                    ></i>
+                  </div>
+                </td>
+              </tr> -->
+              <tr>
+                <th>Name</th>
+                <th>Team</th>
+                <th>View</th>
+              </tr>
+
+              <tr *ngFor="let empData of managerCount">
+                <td scope="row">{{ empData.manager }}</td>
+                <td>{{ empData.value }}</td>
+                <td><button>View</button></td>
+              </tr>
+            </table>
+          </div>
+          <!-- Engagements Details -->
+          <div class="fl-engage-details">
+            <div class="fl-engage-details-title">
+              <h2>Engagements:</h2>
+            </div>
+            <div class="fl-engage-details-col">
+              <div class="fl-engage-details-col-1">
+                <div class="fl-engage-details-col-1-1">
+                  <ul>
+                    <div class="fl-engage-details-blurb">
+                      <div class="fl-engage-details-blurb-img">
+                        <span>
+                          <img
+                            src="/assets/Desktop-One-Images/skip.png"
+                            height="63px"
+                            width="63px"
+                          />
+                        </span>
+                      </div>
+                      <div class="fl-engage-details-blurb-btn">
+                        <li>
+                          <span>Skip</span>
+                        </li>
+                        <li>
+                          <button (click)="ToggleFunction(collapseToggl, 1)">
+                            Set/Add Meeting
+                          </button>
+                        </li>
+                      </div>
+                    </div>
+                    <div class="fl-engage-details-blurb">
+                      <div class="fl-engage-details-blurb-img">
+                        <span>
+                          <img
+                            src="/assets/Desktop-One-Images/nmap.png"
+                            height="63px"
+                            width="63px"
+                          />
+                        </span>
+                      </div>
+                      <div class="fl-engage-details-blurb-btn">
+                        <li>
+                          <span>NMAP</span>
+                        </li>
+                        <li>
+                          <button (click)="ToggleFunction(collapseToggl, 6)">
+                            Set/Add Meeting
+                          </button>
+                        </li>
+                      </div>
+                    </div>
+                    <div class="fl-engage-details-blurb">
+                      <div class="fl-engage-details-blurb-img">
+                        <span>
+                          <img
+                            src="/assets/Desktop-One-Images/skip.png"
+                            height="63px"
+                            width="63px"
+                          />
+                        </span>
+                      </div>
+                      <div class="fl-engage-details-blurb-btn">
+                        <li>
+                          <span>Focus Group</span>
+                        </li>
+                        <li>
+                          <button (click)="ToggleFunction(collapseToggl, 5)">
+                            Set/Add Meeting
+                          </button>
+                        </li>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+                <div class="fl-engage-details-col-1-2">
+                  <ul>
+                    <div class="fl-engage-details-blurb" *ngIf="newHireCount > 0">
+                      <div class="fl-engage-details-blurb-img">
+                        <span>
+                          <img
+                            src="/assets/Desktop-One-Images/toptalent.png"
+                            height="63px"
+                            width="63px"
+                          />
+                        </span>
+                      </div>
+                      <div class="fl-engage-details-blurb-btn">
+                        <li>
+                          <span>New Hire Connects</span>
+                        </li>
+                        <li>
+                          <button (click)="ToggleFunction(collapseToggl, 2)">
+                            Set/Add Meeting
+                          </button>
+                        </li>
+                      </div>
+                    </div>
+                    <div class="fl-engage-details-blurb">
+                      <div class="fl-engage-details-blurb-img">
+                        <span>
+                          <img
+                            src="/assets/Desktop-One-Images/policyrefresher.png"
+                            height="63px"
+                            width="63px"
+                          />
+                        </span>
+                      </div>
+                      <div class="fl-engage-details-blurb-btn">
+                        <li>
+                          <span>Open House Sessions</span>
+                        </li>
+                        <li>
+                          <button (click)="ToggleFunction(collapseToggl, 3)">
+                            Set/Add Meeting
+                          </button>
+                        </li>
+                      </div>
+                    </div>
+                    <div class="fl-engage-details-blurb">
+                      <div class="fl-engage-details-blurb-img">
+                        <span>
+                          <img
+                            src="/assets/Desktop-One-Images/skip.png"
+                            height="63px"
+                            width="63px"
+                          />
+                        </span>
+                      </div>
+                      <div class="fl-engage-details-blurb-btn">
+                        <li>
+                          <span>Monthly Manager Connect</span>
+                        </li>
+                        <li>
+                          <button (click)="ToggleFunction(collapseToggl, 4)">
+                            Set/Add Meeting
+                          </button>
+                        </li>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+              <div class="fl-engage-details-col-2">
+                <div class="fl-engage-details-col-2-wrap">
+                  <div>
+                    <h2>Engagement Overview:</h2>
+                  </div>
+                  <div class="fl-engage-details-col-2-connect">
+                    <div class="fl-engage-details-col-2-connect-wrap">
+                      <h3>{{ connectCount }}</h3>
+                      <span>Connects</span>
+                    </div>
+                  </div>
+                  <div>
+                    <button (click)="engagementTable(statisticsTable)">
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div
+          class="modal"
+          [ngClass]="{ 'fade showSum': collapseToggl }"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div *ngIf="!authStatus">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel">
+                    Set / Add Meeting
+                    <span><i class="bi bi-question-circle"></i></span>
+                  </h2>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    aria-label="Close"
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                    (click)="closeSum()"
+                  >
+                    <i class="bi bi-x"></i>
+                  </button>
+                </div>
+                <div class="fl-form-sub-heading">
+                  Set Up Meetings with connections
+                </div>
+                <div *ngIf="formShowHide">
+                    <form
+                      class="fl-modal-form"
+                      [formGroup]="detailForm"
+                      (ngSubmit)="setMeeting(detailForm)"
+                    >
+                      <div class="form-group">
+                        <div>
+                          <label>Your Employee Id</label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="input1"
+                            placeholder="Employee Id"
+                            formControlName="Loggerempid"
+                          />
+                          <div class="alert alert-danger" *ngIf="takeControl['Loggerempid'].touched && takeControl['Loggerempid'].invalid">
+                            <div *ngIf="takeControl['Loggerempid'].errors['required']">
+                              Please enter Employee ID.
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div>
+                          <label>Connection's Employee Id</label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="input2"
+                            placeholder="Employee Id"
+                            formControlName="empid"
+                          />
+                        </div> -->
+                        <div class="fl-form-connection">
+                          <div class="form-group col-md-6 fl-form-connection-type">
+                            <div><label>Select Connections Type</label></div>
+                            <div class="select">
+                              <select
+                                name="format"
+                                id="format"
+                                formControlName="engageType"
+                              >
+                                <option
+                                  class="fl-form-option"
+                                  *ngFor="let engage of engagementType"
+                                  value="{{ engage.option }}"
+                                >
+                                  {{ engage.label }}
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group col-md-6 fl-form-date">
+                            <label>Select Date</label>
+                            <input
+                              type="date"
+                              class="form-control"
+                              id="input4"
+                              formControlName="meetData"
+                              min="{{minDate}}"
+                              max="{{maxDate}}"
+                            />
+                            <div class="alert alert-danger" *ngIf="takeControl['meetData'].touched && takeControl['meetData'].invalid">
+                              <div *ngIf="takeControl['meetData'].errors['required']">
+                                Please select the date.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputAddress2"
+                            >Select Predefined Reasons</label
+                          >
+                          <div class="select">
+                            <select
+                              name="format"
+                              id="format"
+                              formControlName="reason"
+                            >
+                              <option
+                                class="fl-form-option"
+                                *ngFor="let reasonTy of reasonType"
+                                value="{{ reasonTy.option }}"
+                              >
+                                {{ reasonTy.label }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="fl-modal-form-btn">
+                          <button class="btn btn-primary set-meet" [disabled]="detailForm.invalid" >
+                            Set Meeting
+                          </button>
+                        </div>
+                        <div *ngIf="nhDate != ''" style="margin-top: 20px;">
+                          <p>Notes:</p>
+                          <span>Meeting has been already added for <strong>{{nhDate}}</strong>. If you want to reschedule, please select the new date.</span>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="fl-validation" *ngIf="authStatus">
+                  <div class="fl-validation-main">
+                    <h3 class="fl-validation-title">
+                      New Hire Connect Confirmation
+                    </h3>
+                    <span>Please click on the below button to provide the confirmation.</span>
+                    <div class="fl-validation-main-btn">
+                      <div class="fl-validation-main-btn-1">
+                        <button class="btn btn-primary fl-validation-btn" (click)="ackFn(1)">
+                          Yes
+                        </button>
+                      </div>
+                      <div class="fl-validation-main-btn-2">
+                        <button class="btn btn-primary fl-validation-btn" (click)="ackFn(0)">
+                          No
+                        </button>
+                      </div>
+                    </div>
+                    <!-- <p>Thanks for the confirmation!</p>
+                    <p>
+                      Please reschedule the
+                      <strong>"New Hire Connect"</strong> for the new date.
+                    </p> -->
+                  </div>
+                </div>
+                <div *ngIf="statusMsg" class="fl-submit-form-msg">
+                  <span>{{ statusMessage }}</span>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Statistics Details -->
+        <div class="fl-statistics" *ngIf="statisticsTable">
+          <div class="fl-stat-1">
+            <h2>Engagement Statistics:</h2>
+            <!-- <span>Filter</span> -->
+          </div>
+          <div class="fl-stat-2">
+            <table>
+              <tr>
+                <th scope="col">Timeframe</th>
+
+                <th scope="col">Skip</th>
+
+                <th scope="col">NMAP</th>
+                <th scope="col">Top Talent Connect</th>
+                <th scope="col">Policy Refresher Session</th>
+              </tr>
+              <tr>
+                <th scope="row">Quarter-1</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quarter-2</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quarter-3</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Quarter-4</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Annual</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- End Statistics Details -->
+      </div>
+    </div>
+  </div>
+</section>

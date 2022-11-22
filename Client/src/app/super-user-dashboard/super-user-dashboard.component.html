@@ -1,0 +1,298 @@
+<section class="fl-main-section">
+    <div class="fl-main">
+      <!-- Header -->
+      <div class="fl-header">
+        <div class="fl-main-logo">
+          <img
+            src="/assets/Desktop-One-Images/thomsonreuters_logo.png"
+            width="262"
+            height="auto"
+          />
+        </div>
+        <div class="fl-employee-profile">
+          <div><i class="bi bi-caret-down-fill"></i></div>
+          <div class="fl-employee">
+            <div class="fl-employee-image"></div>
+          </div>
+        </div>
+        <div class="fl-employee-detail">
+          <span class="fl-employee-name">{{appUserName}}</span>
+          <span class="fl-employee-id">123456</span>
+        </div>
+        <div class="fl-notification"></div>
+      </div>
+      <!-- Sidebar Nav -->
+      <div class="fl-sidebar-nav">
+        <div class="fl-active-nav"></div>
+        <div class="fl-nav-profile">
+          <div class="fl-nav-profile-img"></div>
+        </div>
+        <div class="fl-nav-calender">
+          <div class="fl-nav-calender-img"></div>
+        </div>
+        <div class="fl-nav-setting">
+          <div class="fl-nav-setting-img"></div>
+        </div>
+      </div>
+      <!-- Mobile Header -->
+      <div class="fl-mobile-header-main">
+        <div class="fl-mobile-header">
+          <div class="fl-mob-logo-main">
+            <div class="fl-mob-logo">
+              <img
+                src="/assets/Desktop-One-Images/thomsonreuters_logo.png"
+                width="262"
+                height="auto"
+              />
+            </div>
+            <div class="fl-mob-emp-detail">
+              <span class="fl-employee-name">{{appUserName}}</span>
+              <span class="fl-employee-id">123456</span>
+            </div>
+          </div>
+          <div>
+            <div class="fl-mob-nav">
+              <div class="fl-mob-settings-bar">
+                <img
+                  src="/assets/Desktop-One-Images/profile.png"
+                  width="32"
+                  height="auto"
+                />
+                <img
+                  src="/assets/Desktop-One-Images/calendar.png"
+                  width="32"
+                  height="auto"
+                />
+                <img
+                  src="/assets/Desktop-One-Images/setting_1.png"
+                  width="32"
+                  height="auto"
+                />
+              </div>
+              <div class="fl-mob-emplyee-details">
+                <div class="fl-mob-notification">
+                  <img
+                    src="/assets/Desktop-One-Images/notification.png"
+                    width="18"
+                    height="auto"
+                  />
+                </div>
+                <div class="fl-mob-employee-profile">
+                  <img
+                    src="/assets/Desktop-One-Images/profile_two.png"
+                    width="18"
+                    height="auto"
+                  />
+                </div>
+                <div class="fl-mob-down-fill">
+                  <i class="bi bi-caret-down-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Body -->
+      <div class="fl-body">
+        <div class="fl-main-body">
+          <!-- Employee Details -->
+          <div class="fl-details">
+            <div class="fl-manager-details">
+              <div class="fl-manager-details-title">
+                <h2>HRBP's Details:</h2>
+              </div>
+              <table>
+                <tr>
+                  <th>{{appUserName}}</th>
+                  <!-- <th>Team</th> -->
+                  <td><button (click)="overAllFn()">Overall Details</button></td>
+                </tr>
+                <tr *ngFor="let empData of hrbpUnderSup">
+                  <!-- <td scope="row">Charan</td> -->
+                  <td>{{ empData.username }}</td>
+                  <td><button (click)="getSpecificDetails(empData.username)">Details</button></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Statistics Details -->
+          <div class="fl-statistics" *ngIf="userTabTogg">
+            <div class="fl-stat-1">
+              <h2>Engagement Statistics: <strong>{{ selectedSpecUserName }}</strong></h2>
+              <!-- <span>Filter</span> -->
+            </div>
+            <div class="fl-stat-2">
+              <table *ngFor="let val of userMetrix">
+                <tr>
+                  <th scope="col" rowspan="2">Timeframe</th>
+  
+                  <th scope="col" colspan="2">Skip</th>
+                  <th scope="col" colspan="2">NMAP</th>
+                  <th scope="col" colspan="2">New Hire Connects</th>
+                  <th scope="col" colspan="2">Open House Sessions</th>
+                </tr>
+                <tr>
+                  <th scope="col">Target</th>
+                  <th scope="col">Achieved</th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Achieved</th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Achieved</th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Achieved</th>
+              </tr>
+                <tr>
+                  <th scope="row">Quarter-1</th>
+                  <td>{{ val.q1[0].skip[0].t }}</td>
+                  <td>{{ val.q1[0].skip[0].a }}</td>
+                  <td>{{ val.q1[0].nmap[0].t }}</td>
+                  <td>{{ val.q1[0].nmap[0].a }}</td>
+                  <td>{{ val.q1[0].nhc[0].t }}</td>
+                  <td>{{ val.q1[0].nhc[0].a }}</td>
+                  <td>{{ val.q1[0].ohs[0].t }}</td>
+                  <td>{{ val.q1[0].ohs[0].a }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Quarter-2</th>
+                  <td>{{ val.q2[0].skip[0].t }}</td>
+                  <td>{{ val.q2[0].skip[0].a }}</td>
+                  <td>{{ val.q2[0].nmap[0].t }}</td>
+                  <td>{{ val.q2[0].nmap[0].a }}</td>
+                  <td>{{ val.q2[0].nhc[0].t }}</td>
+                  <td>{{ val.q2[0].nhc[0].a }}</td>
+                  <td>{{ val.q2[0].ohs[0].t }}</td>
+                  <td>{{ val.q2[0].ohs[0].a }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Quarter-3</th>
+                  <td>{{ val.q3[0].skip[0].t }}</td>
+                  <td>{{ val.q3[0].skip[0].a }}</td>
+                  <td>{{ val.q3[0].nmap[0].t }}</td>
+                  <td>{{ val.q3[0].nmap[0].a }}</td>
+                  <td>{{ val.q3[0].nhc[0].t }}</td>
+                  <td>{{ val.q3[0].nhc[0].a }}</td>
+                  <td>{{ val.q3[0].ohs[0].t }}</td>
+                  <td>{{ val.q3[0].ohs[0].a }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Quarter-4</th>
+                  <td>{{ val.q4[0].skip[0].t }}</td>
+                  <td>{{ val.q4[0].skip[0].a }}</td>
+                  <td>{{ val.q4[0].nmap[0].t }}</td>
+                  <td>{{ val.q4[0].nmap[0].a }}</td>
+                  <td>{{ val.q4[0].nhc[0].t }}</td>
+                  <td>{{ val.q4[0].nhc[0].a }}</td>
+                  <td>{{ val.q4[0].ohs[0].t }}</td>
+                  <td>{{ val.q4[0].ohs[0].a }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Annual</th>
+                  <td>{{ val.q1[0].skip[0].t + val.q2[0].skip[0].t + val.q3[0].skip[0].t + val.q4[0].skip[0].t }}</td>
+                  <td>{{ val.q1[0].skip[0].a + val.q2[0].skip[0].a + val.q3[0].skip[0].a + val.q4[0].skip[0].a }}</td>
+                  <td>{{ val.q1[0].nmap[0].t + val.q2[0].nmap[0].t + val.q3[0].nmap[0].t + val.q4[0].nmap[0].t }}</td>
+                  <td>{{ val.q1[0].nmap[0].a + val.q2[0].nmap[0].a + val.q3[0].nmap[0].a + val.q4[0].nmap[0].a }}</td>
+                  <td>{{ val.q1[0].nhc[0].t + val.q2[0].nhc[0].t + val.q3[0].nhc[0].t + val.q4[0].nhc[0].t }}</td>
+                  <td>{{ val.q1[0].nhc[0].a + val.q2[0].nhc[0].a + val.q3[0].nhc[0].a + val.q4[0].nhc[0].a }}</td>
+                  <td>{{ val.q1[0].ohs[0].t + val.q2[0].ohs[0].t + val.q3[0].ohs[0].t + val.q4[0].ohs[0].t }}</td>
+                  <td>{{ val.q1[0].ohs[0].a + val.q2[0].ohs[0].a + val.q3[0].ohs[0].a + val.q4[0].ohs[0].a }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- End Statistics Details -->
+
+
+          <!-- OverAll Statistics Details -->
+          <div class="fl-statistics" *ngIf="overTabTogg">
+            <div class="fl-stat-1">
+              <h2>Overall Engagement Statistics:</h2>
+              <!-- <span>Filter</span> -->
+            </div>
+            <div class="fl-stat-2">
+              <table >
+                <tr>
+                  <th scope="col" rowspan="2">HRBP</th>
+  
+                  <th scope="col" colspan="2">Skip</th>
+                  <th scope="col" colspan="2">NMAP</th>
+                  <th scope="col" colspan="2">New Hire Connects</th>
+                  <th scope="col" colspan="2">Open House Sessions</th>
+                </tr>
+                <tr>
+                  <th scope="col">Target</th>
+                  <th scope="col">Achieved</th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Achieved</th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Achieved</th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Achieved</th>
+              </tr>
+                <tr *ngFor="let val of hrbpUnderSup">
+                  <!-- <div>{{ val.targetachieved[0].q1[0].ohs[0].a }}</div> -->
+                  <th scope="row">{{val.username}}</th>
+                  <!-- <td>{{val.targetachieved[0].q2[0].skip[0].t}}</td> -->
+                  <td>{{val.targetachieved[0].q1[0].skip[0].t + val.targetachieved[0].q2[0].skip[0].t + val.targetachieved[0].q3[0].skip[0].t + val.targetachieved[0].q4[0].skip[0].t }}</td>
+                  <td>{{val.targetachieved[0].q1[0].skip[0].a + val.targetachieved[0].q2[0].skip[0].a + val.targetachieved[0].q3[0].skip[0].a + val.targetachieved[0].q4[0].skip[0].a }}</td>
+                  <td>{{val.targetachieved[0].q1[0].nmap[0].t +val.targetachieved[0].q2[0].nmap[0].t +val.targetachieved[0].q3[0].nmap[0].t +val.targetachieved[0].q4[0].nmap[0].t }}</td>
+                  <td>{{val.targetachieved[0].q1[0].nmap[0].a +val.targetachieved[0].q2[0].nmap[0].a +val.targetachieved[0].q3[0].nmap[0].a +val.targetachieved[0].q4[0].nmap[0].a }}</td>
+                  <td>{{val.targetachieved[0].q1[0].nhc[0].t +val.targetachieved[0].q2[0].nhc[0].t +val.targetachieved[0].q3[0].nhc[0].t +val.targetachieved[0].q4[0].nhc[0].t }}</td>
+                  <td>{{val.targetachieved[0].q1[0].nhc[0].a +val.targetachieved[0].q2[0].nhc[0].a +val.targetachieved[0].q3[0].nhc[0].a +val.targetachieved[0].q4[0].nhc[0].a }}</td>
+                  <td>{{val.targetachieved[0].q1[0].ohs[0].t +val.targetachieved[0].q2[0].ohs[0].t +val.targetachieved[0].q3[0].ohs[0].t +val.targetachieved[0].q4[0].ohs[0].t }}</td>
+                  <td>{{val.targetachieved[0].q1[0].ohs[0].a +val.targetachieved[0].q2[0].ohs[0].a +val.targetachieved[0].q3[0].ohs[0].a +val.targetachieved[0].q4[0].ohs[0].a }}</td>
+                </tr>
+                <!-- <tr>
+                  <th scope="row">Quarter-2</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">Quarter-3</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">Quarter-4</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr> -->
+                <tr>
+                  <th scope="row">Total</th>
+                  <td>{{totalTA.skipTar}}</td>
+                  <td>{{totalTA.skipAch}}</td>
+                  <td>{{totalTA.nmapTar}}</td>
+                  <td>{{totalTA.nmapAch}}</td>
+                  <td>{{totalTA.nhcTar}}</td>
+                  <td>{{totalTA.nhcAch}}</td>
+                  <td>{{totalTA.ohsTar}}</td>
+                  <td>{{totalTA.ohsAch}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- End OverAll Statistics Details -->
+        </div>
+      </div>
+    </div>
+  </section>
+  

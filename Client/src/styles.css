@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@font-face {
+  font-family: knowledge;
+  src: url(assets/fonts/knowledge2017-tf-20170221/Knowledge2017TF-Regular.ttf)
+    format("truetype");
+}
+
+body {
+  margin: 0px !important;
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  background-color: #fa6400 !important;
+  color: #fff !important;
+}

@@ -1,0 +1,3 @@
+{
+    "connectionString": "mongodb+srv://sivabalan:sivabalan@cluster0.n446l.mongodb.net/HR-Tracker-App?retryWrites=true&w=majority"
+}
